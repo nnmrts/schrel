@@ -1,0 +1,95 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"$id": "https://pumpn.net/code/schrel/schema.json",
+	"title": "Real Estate Listing",
+	"description": "A real estate listing describes the details of an immovable property and contains the important facts about it like costs, area, etc.",
+	"definitions": {
+		"address": {
+			"description": "A postal address.",
+			"type": "object",
+			"properties": {
+				"country": {
+					"description": "The three-letter ISO 3166-1 alpha-3 code of a country in which the region is.",
+					"type": "string"
+				},
+				"locality": {
+					"description": "The locality in which the street is, and which is in the region.",
+					"type": "string"
+				},
+				"region": {
+					"description": "The region in which the locality is, and which is in the country.",
+					"type": "string"
+				},
+				"postOfficeBoxNumber": {
+					"description": "The post office box number for PO box addresses.",
+					"type": "string"
+				},
+				"postalCode": {
+					"description": "The postal code.",
+					"type": "string"
+				},
+				"streetAddress": {
+					"description": "The street address.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"country",
+				"locality",
+				"region",
+				"postalCode",
+				"streetAddress"
+			]
+		}
+	},
+	"properties": {
+		"area": {
+			"description": "The area the property can be used for the purpose it is advertised for in square meters. For example, this is only the roofed living area when the property is an apartment, or when the property is a field, this is only the arable area.",
+			"type": "number",
+			"minimum": 0
+		},
+		"nonrecurringCosts": {
+			"description": "The amount of money a potential client has to pay once to obtain the property.",
+			"type": "number"
+		},
+		"recurringCosts": {
+			"description": "The amount of money a potential client has to pay in a specified interval to retain the property.",
+			"type": "number"
+		},
+		"currency": {
+			"description": "The currency of the costs. Use standard formats: ISO 4217 currency format e.g. \"USD\"; Ticker symbol for cryptocurrencies e.g. \"BTC\"; well known names for Local Exchange Tradings Systems (LETS) and other currency types e.g. \"Ithaca HOUR\".",
+			"type": "string"
+		},
+		"rooms": {
+			"description": "The number of rooms in the property excluding bathrooms, toilets, gardens, balconies, terraces, patios or garages. Basically any room that has four walls, at least a doorframe as entrance and flexibility regarding usage.",
+			"type": "number",
+			"minimum": 0
+		},
+		"location": {
+			"description": "The location of the property.",
+			"type": "object",
+			"properties": {
+				"coordinates": {
+					"description": "The coordinates of the property.",
+					"type": "object"
+				},
+				"address": {
+					"description": "The postal address of the property.",
+					"$ref": "#/definitions/address"
+				},
+				"required": [
+					"coordinates",
+					"address"
+				]
+			}
+		}
+	},
+	"required": [
+		"area",
+		"nonrecurringCosts",
+		"recurringCosts",
+		"currency",
+		"rooms",
+		"location"
+	]
+}

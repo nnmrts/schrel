@@ -1,0 +1,13 @@
+{
+	"name": "schrel",
+	"version": "0.1.0",
+	"description": "A sane JSON schema for real estate listings",
+	"main": "schema.json",
+	"repository": "https://github.com/nnmrts/schrel",
+	"license": "MIT",
+	"private": false,
+	"author": {
+		"name": "nnmrts",
+		"email": "nanomiratus@gmail.com"
+	}
+}
